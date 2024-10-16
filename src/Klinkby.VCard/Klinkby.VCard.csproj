@@ -10,7 +10,7 @@
         <RepositoryUrl>https://github.com/klinkby/vcard</RepositoryUrl>
         <AssemblyName>Klinkby.VCard</AssemblyName>
         <AssemblyTitle>Klinkby.VCard</AssemblyTitle>
-        <PackageId>Klinkby.Toolkitt</PackageId>
+        <PackageId>Klinkby.VCard</PackageId>
         <PackageVersion>2.0.1</PackageVersion>
         <PackageIcon>vcard.png</PackageIcon>
         <PackageTags>VCard VCalendar iCal iCalendar</PackageTags>
