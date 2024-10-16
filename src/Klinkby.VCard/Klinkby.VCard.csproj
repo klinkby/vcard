@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <IsPackable>true</IsPackable>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Authors>@klinkby</Authors>
+        <RepositoryUrl>https://github.com/klinkby/vcard</RepositoryUrl>
+        <AssemblyName>Klinkby.VCard</AssemblyName>
+        <AssemblyTitle>Klinkby.VCard</AssemblyTitle>
+        <PackageId>Klinkby.Toolkitt</PackageId>
+        <PackageVersion>2.0.1</PackageVersion>
+        <PackageIcon>vcard.png</PackageIcon>
+        <PackageTags>VCard VCalendar iCal iCalendar</PackageTags>
+        <Description>Super simple serialize dotnet to iCal format</Description>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.2.25">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../../LICENSE" Pack="true" PackagePath=""/>
+        <None Include="../../README.md" Pack="true" PackagePath=""/>
+        <None Include="../../vcard.png" Pack="true" PackagePath=""/>
+    </ItemGroup>
+</Project>
