@@ -7,9 +7,6 @@
 
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <IsRoslynComponent>true</IsRoslynComponent>
-
-<!--        <RootNamespace>Klinkby.VCard.Generators</RootNamespace>-->
-<!--        <PackageId>Klinkby.VCard.Generators</PackageId>-->
     </PropertyGroup>
 
     <ItemGroup>
