@@ -1,4 +1,5 @@
 using System.Text;
+using System.Text.RegularExpressions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -13,30 +14,43 @@ public sealed class WriteVCardGenerator : ISourceGenerator
     {
         // Register the attribute source
         context.RegisterForPostInitialization(i => i.AddSource(
-            "VCardToStringAttribute.g.cs", 
+            "Common.g.cs", 
             """
 
             using System;
             using System.CodeDom.Compiler;
+            using System.Runtime.CompilerServices;
+            using System.Text.RegularExpressions;
 
             namespace Klinkby.VCard;
 
             /// <inheritdoc />
-            [GeneratedCode("WriteVCardGenerator", "1.0")]
+            [GeneratedCode("Klinkby.VCard.Generators", "1.0")]
             [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
             internal sealed class VCardToStringAttribute() : Attribute;
 
             /// <inheritdoc />
-            [GeneratedCode("WriteVCardGenerator", "1.0")]
+            [GeneratedCode("Klinkby.VCard.Generators", "1.0")]
             [AttributeUsage(AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
             internal sealed class VCardWritableAttribute() : Attribute;
 
             /// <summary>Type can serialize to vCard format</summary>
-            [GeneratedCode("WriteVCardGenerator", "1.0")]
+            [GeneratedCode("Klinkby.VCard.Generators", "1.0")]
             public interface IVCardWriter
             {
                 /// <summary>Serialize to a TextWriter</summary>
                 void WriteVCard(TextWriter writer);
+            }
+            
+            /// <summary>Provide escaping for text <seealso href="https://datatracker.ietf.org/doc/html/rfc5545#section-3.3.11"/></summary>
+            [GeneratedCode("Klinkby.VCard.Generators", "1.0")]
+            internal static class VCardText
+            {
+                private readonly static Regex _escaper = new (@"[\n\;\,\:]", 
+                    RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.ExplicitCapture); 
+                
+                [MethodImpl(MethodImplOptions.AggressiveInlining)]
+                public static string Escape(string value) => _escaper.Replace(value, @"\$0");    
             }
 
             """
@@ -78,16 +92,17 @@ public sealed class WriteVCardGenerator : ISourceGenerator
               using System;
               using System.CodeDom.Compiler;
               using System.Globalization;
+              using Klinkby.VCard;
 
               namespace {{namespaceName}};
 
               partial record {{classSymbol.Name}}
               {
                   /// <inheritdoc />
-                  [GeneratedCode("WriteVCardGenerator", "1.0")]
+                  [GeneratedCode("Klinkby.VCard.Generators", "1.0")]
                   public void WriteVCard(TextWriter writer)
                   {
-                      writer.WriteLine("BEGIN:{{classSymbol.Name.ToUpperInvariant()}}");
+                      writer.Write("BEGIN:{{classSymbol.Name.ToUpperInvariant()}}\n");
 
               """);
 
@@ -96,7 +111,7 @@ public sealed class WriteVCardGenerator : ISourceGenerator
 
         source.AppendLine(
             $$"""
-                      writer.WriteLine("END:{{classSymbol.Name.ToUpperInvariant()}}");
+                      writer.Write("END:{{classSymbol.Name.ToUpperInvariant()}}\n");
                   }
               }
 
@@ -127,7 +142,8 @@ public sealed class WriteVCardGenerator : ISourceGenerator
             source.AppendLine(
                 $"""
                          writer.Write("{propertyName.ToUpperInvariant()}:");
-                         writer.WriteLine({propertyName}.ToString({dtFormat}CultureInfo.InvariantCulture));
+                         writer.Write({propertyName}.ToString({dtFormat}CultureInfo.InvariantCulture));
+                         writer.Write("\n");
                  """);
         }
         else if (fieldType.SpecialType == SpecialType.System_String)
@@ -137,7 +153,8 @@ public sealed class WriteVCardGenerator : ISourceGenerator
                           if (!string.IsNullOrEmpty({{propertyName}}))
                           {
                               writer.Write("{{propertyName.ToUpperInvariant()}}:");
-                              writer.WriteLine({{propertyName}});
+                              writer.Write(VCardText.Escape({{propertyName}}));
+                              writer.Write("\n");
                           }
                   """);
         }
