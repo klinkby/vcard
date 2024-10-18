@@ -7,7 +7,6 @@ public sealed class VCardTest
 {
     [Theory]
     [ClassData(typeof(TestDataGenerator))]
-    
     public void WriteVCard(string expected, IVCardWriter testData)
     {
         using var sw = new StringWriter();
