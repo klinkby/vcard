@@ -11,7 +11,7 @@
         <AssemblyName>Klinkby.VCard</AssemblyName>
         <AssemblyTitle>Klinkby.VCard</AssemblyTitle>
         <PackageId>Klinkby.VCard</PackageId>
-        <PackageVersion>3.0.0-alpha</PackageVersion>
+        <PackageVersion>3.0.0</PackageVersion>
         <PackageIcon>vcard.png</PackageIcon>
         <PackageTags>VCard VCalendar iCal iCalendar</PackageTags>
         <Description>Super simple serialize dotnet to iCal format</Description>
