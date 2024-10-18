@@ -40,11 +40,10 @@
         <None Include="../../vcard.png" Pack="true" PackagePath=""/>
     </ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\Klinkby.VCard.Generators\Klinkby.VCard.Generators.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Analyzer Include="..\Klinkby.VCard.Generators\bin\Debug\netstandard2.0\Klinkby.VCard.Generators.dll"/>
+  <ItemGroup>
+      <ProjectReference Include="..\Klinkby.VCard.Generators\Klinkby.VCard.Generators.csproj"
+                      PrivateAssets="all"
+                      ReferenceOutputAssembly="false"
+                      OutputItemType="Analyzer"/>
     </ItemGroup>
 </Project>
