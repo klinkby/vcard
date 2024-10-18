@@ -1,0 +1,9 @@
+﻿{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "DebugRoslynSourceGenerator": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "../Klinkby.VCard.Generators.Sample/Klinkby.VCard.Generators.Sample.csproj"
+    }
+  }
+}

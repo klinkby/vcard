@@ -8,7 +8,7 @@
         <Nullable>enable</Nullable>
         <WarningsAsErrors>Nullable</WarningsAsErrors>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        
+
         <ImplicitUsings>enable</ImplicitUsings>
         <Configurations>Debug;Release</Configurations>
         <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>

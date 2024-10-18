@@ -3,20 +3,21 @@
 /// <summary>
 ///     <see href="https://datatracker.ietf.org/doc/html/rfc9074.html" />
 /// </summary>
-public sealed class VAlarm : VSerializable
+[VCardToString]
+public sealed partial record VAlarm : IVCardWriter
 {
     /// <summary>
     ///     <see href="https://datatracker.ietf.org/doc/html/rfc9074.html#name-alarm-proximity-trigger" />
     /// </summary>
-    public string Trigger { get; set; } = "-PT15M";
+    public string Trigger { get; init; } = "-PT15M";
 
     /// <summary>
     ///     <see href="https://datatracker.ietf.org/doc/html/rfc9074.html#name-alarm-proximity-trigger" />
     /// </summary>
-    public string Action { get; set; } = "DISPLAY";
+    public string Action { get; init; } = "DISPLAY";
 
     /// <summary>
     ///     <see href="https://datatracker.ietf.org/doc/html/rfc9074.html#section-8.1" />
     /// </summary>
-    public string Description { get; set; } = "Reminder";
+    public string Description { get; init; } = "Reminder";
 }

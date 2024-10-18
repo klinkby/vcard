@@ -1,116 +1,74 @@
-﻿using System.Globalization;
-
-namespace Klinkby.VCard;
+﻿namespace Klinkby.VCard;
 
 /// <summary>
 ///     <see href="https://datatracker.ietf.org/doc/html/rfc5545#section-3.6.1" />
 /// </summary>
-public sealed class VEvent : VSerializable
+[VCardToString]
+public sealed partial record VEvent : IVCardWriter
 {
-    /// <summary>
-    ///     Create a new VEvent
-    /// </summary>
-    /// <param name="fromTime">DtStart</param>
-    /// <param name="toTime">DtEnd</param>
-    /// <param name="createdDateTime">DtStamp</param>
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-    public VEvent(DateTime fromTime, DateTime toTime, DateTime createdDateTime)
-#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-    {
-        SetDtStart(fromTime);
-        SetDtEnd(toTime);
-        SetDtStamp(createdDateTime);
-    }
-
     /// <summary>
     ///     Organizer
     /// </summary>
-    public string? Organizer { get; set; }
+    public string? Organizer { get; init; }
 
     /// <summary>
     ///     Start time
     /// </summary>
-    public string DtStart { get; private set; }
+    public DateTime DtStart { get; init; }
 
     /// <summary>
     ///     End time
     /// </summary>
-    public string DtEnd { get; private set; }
+    public DateTime DtEnd { get; init; }
 
     /// <summary>
     ///     Location
     /// </summary>
-    public string Location { get; set; }
+    public string? Location { get; init; }
 
     /// <summary>
     ///     Description
     /// </summary>
-    public string Description { get; set; }
+    public string? Description { get; init; }
 
     /// <summary>
     ///     OPAQUE
     /// </summary>
-    public string Transp { get; set; } = "OPAQUE";
+    public string Transp { get; init; } = "OPAQUE";
 
     /// <summary>
     ///     Recurrence sequence
     /// </summary>
-    public int Sequence { get; set; }
+    public int Sequence { get; init; }
 
     /// <summary>
     ///     Recurrence unique identifier
     /// </summary>
-    public string UId { get; set; }
+    public string? UId { get; init; }
 
     /// <summary>
     ///     Time stamp
     /// </summary>
-    public string DtStamp { get; private set; }
+    public DateTime DtStamp { get; init; } = DateTime.UtcNow;
 
     /// <summary>
     ///     Summary
     /// </summary>
-    public string? Summary { get; set; }
+    public string? Summary { get; init; }
 
     /// <summary>
     ///     Priority
     /// </summary>
-    public int Priority { get; set; } = 5;
+    public int Priority { get; init; } = 5;
 
     /// <summary>
     ///     PUBLIC
     /// </summary>
-    public string Class { get; set; } = "PUBLIC";
+    public string Class { get; init; } = "PUBLIC";
 
     /// <summary>
     ///     Alarm/Reminder
     /// </summary>
-    public VAlarm Alarm { get; private set; } = new();
-
-    /// <summary>
-    ///     Format the start time
-    /// </summary>
-    /// <param name="dt"></param>
-    public void SetDtStart(DateTime dt)
-    {
-        DtStart = dt.ToString("yyyyMMddTHHmmssZ", CultureInfo.InvariantCulture);
-    }
-
-    /// <summary>
-    ///     Format the end time
-    /// </summary>
-    /// <param name="dt"></param>
-    public void SetDtEnd(DateTime dt)
-    {
-        DtEnd = dt.ToString("yyyyMMddTHHmmssZ", CultureInfo.InvariantCulture);
-    }
-
-    /// <summary>
-    ///     Format the time stamp
-    /// </summary>
-    /// <param name="dt"></param>
-    public void SetDtStamp(DateTime dt)
-    {
-        DtStamp = dt.ToString("yyyyMMddTHHmmssZ", CultureInfo.InvariantCulture);
-    }
+    [VCardWritable]
+    public VAlarm Alarm { get; init; } = new();
 }

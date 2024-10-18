@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Klinkby.VCard", "src\Klinkby.VCard\Klinkby.VCard.csproj", "{E5D42152-E3F8-4DAE-A15D-A9435842B808}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Klinkby.VCard.Generators", "src\Klinkby.VCard.Generators\Klinkby.VCard.Generators.csproj", "{21112920-4899-4F84-B5B8-A675363D7571}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{11154950-0E86-4177-AD2C-AA93B7243F3E}"
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
@@ -23,5 +25,12 @@ Global
 		{E5D42152-E3F8-4DAE-A15D-A9435842B808}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5D42152-E3F8-4DAE-A15D-A9435842B808}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5D42152-E3F8-4DAE-A15D-A9435842B808}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21112920-4899-4F84-B5B8-A675363D7571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21112920-4899-4F84-B5B8-A675363D7571}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21112920-4899-4F84-B5B8-A675363D7571}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21112920-4899-4F84-B5B8-A675363D7571}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{21112920-4899-4F84-B5B8-A675363D7571} = {CE249D03-ACF6-44C4-BAD9-7DF0CA176F23}
 	EndGlobalSection
 EndGlobal

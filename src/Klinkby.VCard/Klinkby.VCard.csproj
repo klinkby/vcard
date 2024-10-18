@@ -11,7 +11,7 @@
         <AssemblyName>Klinkby.VCard</AssemblyName>
         <AssemblyTitle>Klinkby.VCard</AssemblyTitle>
         <PackageId>Klinkby.VCard</PackageId>
-        <PackageVersion>2.0.1</PackageVersion>
+        <PackageVersion>3.0.0-alpha</PackageVersion>
         <PackageIcon>vcard.png</PackageIcon>
         <PackageTags>VCard VCalendar iCal iCalendar</PackageTags>
         <Description>Super simple serialize dotnet to iCal format</Description>
@@ -24,11 +24,27 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
+        <PackageReference Include="Meziantou.Polyfill" Version="1.0.40">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
+
+    <PropertyGroup>
+        <MeziantouPolyfill_IncludedPolyfills>T:System.Runtime.CompilerServices.IsExternalInit</MeziantouPolyfill_IncludedPolyfills>
+    </PropertyGroup>
 
     <ItemGroup>
         <None Include="../../LICENSE" Pack="true" PackagePath=""/>
         <None Include="../../README.md" Pack="true" PackagePath=""/>
         <None Include="../../vcard.png" Pack="true" PackagePath=""/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Klinkby.VCard.Generators\Klinkby.VCard.Generators.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Analyzer Include="..\Klinkby.VCard.Generators\bin\Debug\netstandard2.0\Klinkby.VCard.Generators.dll"/>
     </ItemGroup>
 </Project>

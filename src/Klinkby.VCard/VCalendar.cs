@@ -3,15 +3,25 @@
 /// <summary>
 ///     <see href="https://datatracker.ietf.org/doc/html/rfc9074.html" />
 /// </summary>
-public sealed class VCalendar : VSerializable
+[VCardToString]
+public sealed partial record VCalendar : IVCardWriter
 {
     /// <summary>
     ///     Publish
     /// </summary>
-    public string Method { get; set; } = "PUBLISH";
+    public string Method { get; init; } = "PUBLISH";
 
     /// <summary>
     ///     Events
     /// </summary>
-    public IEnumerable<VEvent> Events { get; set; } = [];
+    [VCardWritable]
+    public IEnumerable<VEvent> Events { get; init; } = [];
+
+    /// <inheritdoc />
+    public override string ToString()
+    {
+        using var writer = new StringWriter();
+        WriteVCard(writer);
+        return writer.ToString();
+    }
 }
