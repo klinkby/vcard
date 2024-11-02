@@ -4,7 +4,7 @@
 ///     <see href="https://datatracker.ietf.org/doc/html/rfc5545#section-3.6.1" />
 /// </summary>
 [VCardToString]
-public sealed partial record VEvent : IVCardWriter
+public partial record VEvent : IVCardWriter
 {
     /// <summary>
     ///     Create a new event
@@ -30,66 +30,66 @@ public sealed partial record VEvent : IVCardWriter
     /// <summary>
     ///     Organizer
     /// </summary>
-    public string? Organizer { get; init; }
+    public string? Organizer { get; set; }
 
     /// <summary>
     ///     Start time
     /// </summary>
-    public DateTime DtStart { get; init; }
+    public DateTime DtStart { get; set; }
 
     /// <summary>
     ///     End time
     /// </summary>
-    public DateTime DtEnd { get; init; }
+    public DateTime DtEnd { get; set; }
 
     /// <summary>
     ///     Location
     /// </summary>
-    public string? Location { get; init; }
+    public string? Location { get; set; }
 
     /// <summary>
     ///     Description
     /// </summary>
-    public string? Description { get; init; }
+    public string? Description { get; set; }
 
     /// <summary>
     ///     OPAQUE
     /// </summary>
-    public string Transp { get; init; } = "OPAQUE";
+    public string Transp { get; set; } = "OPAQUE";
 
     /// <summary>
     ///     Recurrence sequence
     /// </summary>
-    public int Sequence { get; init; }
+    public int Sequence { get; set; }
 
     /// <summary>
     ///     Recurrence unique identifier
     /// </summary>
-    public string? UId { get; init; }
+    public string? UId { get; set; }
 
     /// <summary>
     ///     Time stamp
     /// </summary>
-    public DateTime DtStamp { get; init; } = DateTime.UtcNow;
+    public DateTime DtStamp { get; set; } = DateTime.UtcNow;
 
     /// <summary>
     ///     Summary
     /// </summary>
-    public string? Summary { get; init; }
+    public string? Summary { get; set; }
 
     /// <summary>
     ///     Priority
     /// </summary>
-    public int Priority { get; init; } = 5;
+    public int Priority { get; set; } = 5;
 
     /// <summary>
     ///     PUBLIC
     /// </summary>
-    public string Class { get; init; } = "PUBLIC";
+    public string Class { get; set; } = "PUBLIC";
 
     /// <summary>
     ///     Alarm/Reminder
     /// </summary>
     [VCardWritable]
-    public VAlarm Alarm { get; init; } = VAlarm.Default;
+    public VAlarm Alarm { get; set; } = VAlarm.Default;
 }

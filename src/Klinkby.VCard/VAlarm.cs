@@ -4,7 +4,7 @@
 ///     <see href="https://datatracker.ietf.org/doc/html/rfc9074.html" />
 /// </summary>
 [VCardToString]
-public sealed partial record VAlarm : IVCardWriter
+public partial record VAlarm : IVCardWriter
 {
     internal static readonly VAlarm Default = new()
     {
@@ -16,15 +16,15 @@ public sealed partial record VAlarm : IVCardWriter
     /// <summary>
     ///     <see href="https://datatracker.ietf.org/doc/html/rfc9074.html#name-alarm-proximity-trigger" />
     /// </summary>
-    public string Trigger { get; init; } = "-PT15M";
+    public string Trigger { get; set; } = "-PT15M";
 
     /// <summary>
     ///     <see href="https://datatracker.ietf.org/doc/html/rfc9074.html#name-alarm-proximity-trigger" />
     /// </summary>
-    public string Action { get; init; } = "DISPLAY";
+    public string Action { get; set; } = "DISPLAY";
 
     /// <summary>
     ///     <see href="https://datatracker.ietf.org/doc/html/rfc9074.html#section-8.1" />
     /// </summary>
-    public string Description { get; init; } = "Reminder";
+    public string Description { get; set; } = "Reminder";
 }

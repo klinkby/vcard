@@ -4,12 +4,12 @@
 ///     <see href="https://datatracker.ietf.org/doc/html/rfc9074.html" />
 /// </summary>
 [VCardToString]
-public sealed partial record VCalendar : IVCardWriter
+public partial record VCalendar : IVCardWriter
 {
     /// <summary>
     ///     Publish
     /// </summary>
-    public string Method { get; init; } = "PUBLISH";
+    public string Method { get; set; } = "PUBLISH";
 
     /// <summary>
     ///     Events
