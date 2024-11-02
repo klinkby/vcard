@@ -52,8 +52,8 @@ public class VCardBenchmark
         /// <inheritdoc />
         public Config()
         {
-            var baseJob = Job.ShortRun;
-            AddJob(baseJob.WithNuGet("Klinkby.VCard", "2.0.0").WithId("2.0.0"));
+            var baseJob = Job.MediumRun;
+            AddJob(baseJob.AsBaseline().WithNuGet("Klinkby.VCard", "2.0.1").WithId("2.0.1"));
             AddJob(baseJob.WithNuGet("Klinkby.VCard", "3.1.2").WithId("3.1.2"));
         }
     }

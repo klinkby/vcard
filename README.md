@@ -20,3 +20,13 @@ MIT licensed. See [LICENSE](https://github.com/klinkby/vcard/blob/main/LICENSE) 
 ## Dependencies
 
 - netstandard2.0 or later
+
+## Revisions
+
+V3 adds source generator for faster serialization.
+BenchmarkDotNet shows a 3x speedup:
+
+| Method            | Job   | NuGetReferences     | Mean      | Error     | StdDev    | Ratio | RatioSD |
+|------------------ |------ |-------------------- |----------:|----------:|----------:|------:|--------:|
+| VCalendarToString | 2.0.1 | Klinkby.VCard 2.0.1 | 19.759 us | 0.3502 us | 0.5023 us |  1.00 |    0.04 |
+| VCalendarToString | 3.1.2 | Klinkby.VCard 3.1.2 |  6.408 us | 0.0587 us | 0.0804 us |  0.32 |    0.01 |
