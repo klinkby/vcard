@@ -7,6 +7,27 @@
 public sealed partial record VEvent : IVCardWriter
 {
     /// <summary>
+    ///     Create a new event
+    /// </summary>
+    public VEvent()
+    {
+    }
+
+    /// <summary>
+    ///     Create a new event
+    /// </summary>
+    /// <param name="fromTime">Start time</param>
+    /// <param name="toTime">End time</param>
+    /// <param name="createdDateTime">Create time</param>
+    [Obsolete("Use object initializer instead")]
+    public VEvent(DateTime fromTime, DateTime toTime, DateTime createdDateTime) : this()
+    {
+        DtStart = fromTime;
+        DtEnd = toTime;
+        DtStamp = createdDateTime;
+    }
+
+    /// <summary>
     ///     Organizer
     /// </summary>
     public string? Organizer { get; init; }
@@ -70,5 +91,5 @@ public sealed partial record VEvent : IVCardWriter
     ///     Alarm/Reminder
     /// </summary>
     [VCardWritable]
-    public VAlarm Alarm { get; init; } = new();
+    public VAlarm Alarm { get; init; } = VAlarm.Default;
 }
