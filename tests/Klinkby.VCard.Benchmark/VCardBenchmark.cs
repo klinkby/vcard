@@ -1,6 +1,7 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Jobs;
+using BenchmarkDotNet.Toolchains.InProcess.Emit;
 
 namespace Klinkby.VCard.Benchmark;
 
@@ -41,7 +42,6 @@ public class VCardBenchmark
     private static VCalendar CreateVCalendar() =>
         new()
         {
-            Method = "PUBLISH",
             Events = Enumerable.Range(0, 10).Select(_ => CreateVEvent()).ToArray()
         };
 
@@ -52,10 +52,9 @@ public class VCardBenchmark
         /// <inheritdoc />
         public Config()
         {
-            var baseJob = Job.MediumRun;
-
+            var baseJob = Job.ShortRun;
             AddJob(baseJob.WithNuGet("Klinkby.VCard", "2.0.0").WithId("2.0.0"));
-            AddJob(baseJob.WithNuGet("Klinkby.VCard", "3.1.0").WithId("3.1.0"));
+            AddJob(baseJob.WithNuGet("Klinkby.VCard", "3.1.1").WithId("3.1.1"));
         }
     }
     #pragma warning restore CA1812

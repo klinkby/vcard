@@ -15,7 +15,7 @@ public sealed partial record VCalendar : IVCardWriter
     ///     Events
     /// </summary>
     [VCardWritable]
-    public IEnumerable<VEvent> Events { get; init; } = [];
+    public IEnumerable<VEvent> Events { get; set; } = [];
 
     /// <inheritdoc />
     public override string ToString()
