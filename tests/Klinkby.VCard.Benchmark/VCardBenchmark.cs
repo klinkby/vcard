@@ -6,6 +6,7 @@ using BenchmarkDotNet.Toolchains.InProcess.Emit;
 namespace Klinkby.VCard.Benchmark;
 
 [Config(typeof(Config))]
+[MemoryDiagnoser]
 public class VCardBenchmark
 {
     private VCalendar? _vCalendar;
