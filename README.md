@@ -23,10 +23,11 @@ MIT licensed. See [LICENSE](https://github.com/klinkby/vcard/blob/main/LICENSE) 
 
 ## Revisions
 
-V3 adds source generator for faster serialization.
-BenchmarkDotNet shows a 3x speedup:
+V3 adds source generator for more efficient serialization.
+The included BenchmarkDotNet test shows a 3x speedup over V2, at 1/7th memory usage.
 
-| Method            | Job   | NuGetReferences     | Mean      | Error     | StdDev    | Ratio | RatioSD |
-|------------------ |------ |-------------------- |----------:|----------:|----------:|------:|--------:|
-| VCalendarToString | 2.0.1 | Klinkby.VCard 2.0.1 | 19.759 us | 0.3502 us | 0.5023 us |  1.00 |    0.04 |
-| VCalendarToString | 3.1.2 | Klinkby.VCard 3.1.2 |  6.408 us | 0.0587 us | 0.0804 us |  0.32 |    0.01 |
+| Method            | Job   | NuGetReferences     | Mean      | Error     | StdDev    | Ratio | RatioSD | Gen0    | Gen1   | Allocated | Alloc Ratio |
+|------------------ |------ |-------------------- |----------:|----------:|----------:|------:|--------:|--------:|-------:|----------:|------------:|
+| VCalendarToString | 2.0.1 | Klinkby.VCard 2.0.1 | 20.400 us | 0.3844 us | 0.5261 us |  1.00 |    0.04 | 14.6484 | 0.2136 | 119.81 KB |        1.00 |
+| VCalendarToString | 3.1.2 | Klinkby.VCard 3.1.2 |  6.445 us | 0.0430 us | 0.0603 us |  0.32 |    0.01 |  2.0065 | 0.0610 |  16.43 KB |        0.14 |
+
