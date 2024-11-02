@@ -55,7 +55,7 @@ public class VCardBenchmark
             var baseJob = Job.MediumRun;
 
             AddJob(baseJob.WithNuGet("Klinkby.VCard", "2.0.0").WithId("2.0.0"));
-            AddJob(baseJob.WithNuGet("Klinkby.VCard", "3.0.2").WithId("3.0.2"));
+            AddJob(baseJob.WithNuGet("Klinkby.VCard", "3.1.0").WithId("3.1.0"));
         }
     }
     #pragma warning restore CA1812
