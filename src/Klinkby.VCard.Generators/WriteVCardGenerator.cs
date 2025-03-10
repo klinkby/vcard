@@ -105,7 +105,16 @@ public sealed class WriteVCardGenerator : ISourceGenerator
                       writer.Write("BEGIN:{{classSymbol.Name.ToUpperInvariant()}}\n");
 
               """);
-
+        
+        // write mandatory header
+        if (string.Equals("VCalendar", classSymbol.Name, StringComparison.OrdinalIgnoreCase))
+        {
+            source.AppendLine(
+            $"""
+                      writer.Write("PRODID:-//Klinkby//VCard 3//EN\nVERSION:2.0\n");
+              """);
+        }
+        
         // create properties for each field 
         foreach (var propertySymbol in properties) ProcessProperty(source, propertySymbol);
 
