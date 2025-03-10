@@ -149,14 +149,23 @@ public sealed class WriteVCardGenerator : ISourceGenerator
         else if (fieldType.SpecialType == SpecialType.System_String)
         {
             source.AppendLine(
-                $$"""
-                          if (!string.IsNullOrEmpty({{propertyName}}))
-                          {
-                              writer.Write("{{propertyName.ToUpperInvariant()}}:");
-                              writer.Write(VCardText.Escape({{propertyName}}));
-                              writer.Write("\n");
-                          }
-                  """);
+                string.Equals("Organizer", propertyName, StringComparison.OrdinalIgnoreCase)
+                    ? $$"""
+                                if (!string.IsNullOrEmpty({{propertyName}}))
+                                {
+                                    writer.Write("{{propertyName.ToUpperInvariant()}};CN=\"");
+                                    writer.Write(VCardText.Escape({{propertyName}}));
+                                    writer.Write("\"\n");
+                                }
+                        """
+                    : $$"""
+                                if (!string.IsNullOrEmpty({{propertyName}}))
+                                {
+                                    writer.Write("{{propertyName.ToUpperInvariant()}}:");
+                                    writer.Write(VCardText.Escape({{propertyName}}));
+                                    writer.Write("\n");
+                                }
+                        """);
         }
     }
 
