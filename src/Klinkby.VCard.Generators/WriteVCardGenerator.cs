@@ -153,7 +153,7 @@ public sealed class WriteVCardGenerator : ISourceGenerator
                     ? $$"""
                                 if (!string.IsNullOrEmpty({{propertyName}}))
                                 {
-                                    writer.Write("{{propertyName.ToUpperInvariant()}};CN=\"");
+                                    writer.Write("{{propertyName.ToUpperInvariant()}}:CN=\"");
                                     writer.Write(VCardText.Escape({{propertyName}}));
                                     writer.Write("\"\n");
                                 }
