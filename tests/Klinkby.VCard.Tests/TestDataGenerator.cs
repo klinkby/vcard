@@ -8,7 +8,7 @@ public sealed class TestDataGenerator : IEnumerable<object[]>
         "BEGIN:VALARM\nTRIGGER:trigger\nACTION:action\nDESCRIPTION:alarm\nEND:VALARM\n";
 
     private const string ExpectedVEvent =
-        $"BEGIN:VEVENT\nORGANIZER;CN=\"organizer\"\nDTSTART:20220101T000000Z\nDTEND:20220101T010000Z\nLOCATION:location\nDESCRIPTION:description\nTRANSP:transp\nSEQUENCE:1\nUID:uid\nDTSTAMP:20220101T000000Z\nSUMMARY:summary\nPRIORITY:1\nCLASS:class\n{ExpectedVAlarm}END:VEVENT\n";
+        $"BEGIN:VEVENT\nORGANIZER:CN=\"organizer\"\nDTSTART:20220101T000000Z\nDTEND:20220101T010000Z\nLOCATION:location\nDESCRIPTION:description\nTRANSP:transp\nSEQUENCE:1\nUID:uid\nDTSTAMP:20220101T000000Z\nSUMMARY:summary\nPRIORITY:1\nCLASS:class\n{ExpectedVAlarm}END:VEVENT\n";
 
     private const string ExpectedVCalendar =
         $"BEGIN:VCALENDAR\nMETHOD:PUBLISH\n{ExpectedVEvent}{ExpectedVEvent}END:VCALENDAR\n";
